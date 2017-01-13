@@ -1,4 +1,8 @@
 var SearchResults = React.createClass({
+    addStoreLocation(id) {
+        this.props.addStoreLocation(id)
+    },
+
     render() {
         var results = this.props.stores.map((store) => {
             var storeName = store.search_str.split(',')[0];
@@ -9,7 +13,7 @@ var SearchResults = React.createClass({
                         {store.street} <br />
                         {store.city}, {store.state} {store.postal_code}
                     </address>
-                    <button>+ Add</button>
+                    <button onClick={this.addStoreLocation.bind(this, store.id)}>+ Add</button>
                     < br />
                 </div>
             )

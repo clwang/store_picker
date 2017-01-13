@@ -3,12 +3,6 @@ var Main = React.createClass({
     return { stores: [] }
   },
 
-  componentDidMount() { 
-    // $.getJSON('https://location-winnow.herokuapp.com/locations', (response) => { 
-    //   this.setState({ stores: response }) 
-    // }); 
-  },
-
   fetchResults(term) {
     if (term == "" || term == undefined) {
       // reset the stores
@@ -23,8 +17,22 @@ var Main = React.createClass({
           this.setState({ stores: response });
         }
       })
-    }
-    
+    } 
+  },
+
+  addStoreLocation(id) {
+    $.ajax({
+      url: 'https://location-winnow.herokuapp.com/users/1',
+      data: { location_id: id, id: 1},
+      dataType: 'JSON',
+      type: 'PUT',
+      success: (response) => {
+        console.log('successfully added store', response);
+      },
+      error: (response) => {
+        console.log('there was a problem adding your store', response);
+      }
+    });
   },
 
   render() {
@@ -33,7 +41,7 @@ var Main = React.createClass({
         <h1>Welcome, Charles!</h1>
         <h2>Pick Your Stores So We Can Help You Hire.</h2>
         <Search fetchResults={this.fetchResults} />
-        <SearchResults stores={this.state.stores}  />
+        <SearchResults stores={this.state.stores} addStoreLocation={this.addStoreLocation}  />
       </div>
     )
   }
