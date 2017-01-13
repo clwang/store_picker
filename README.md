@@ -1,24 +1,24 @@
-# README
+# Store Picker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Technologies: Rails 5.0, React
 
-Things you may want to cover:
+A simple application that searches store locations and allow a user to add a location.
 
-* Ruby version
+## To run application locally
 
-* System dependencies
+```ruby
+bundle install
+rails s
+```
 
-* Configuration
+---
 
-* Database creation
+## Known Issues:
 
-* Database initialization
+The 'PUT' request does not seem to be working and returns a 400 bad request response from the API.
 
-* How to run the test suite
+## Improvements:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Better styling
+* Tests
+* Setup a backend for our own user authentication
